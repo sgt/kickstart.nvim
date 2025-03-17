@@ -1,4 +1,4 @@
-vim.o.guifont = 'Cascadia Code NF:h12'
+vim.o.guifont = 'Cascadia Code NF:h11'
 vim.g.neovide_cursor_animation_length = 0.08
 vim.g.neovide_cursor_trail_size = 0.0
 
