@@ -7,6 +7,9 @@ return {
     'smoka7/hop.nvim',
   },
   {
+    'tpope/vim-repeat',
+  },
+  {
     'kylechui/nvim-surround',
     version = '^3.0.0', -- Use for stability; omit to use `main` branch for the latest features
     event = 'VeryLazy',
@@ -17,9 +20,10 @@ return {
     end,
   },
   {
-    'ggandor/leap.nvim',
+    'https://codeberg.org/andyg/leap.nvim.git',
     config = function()
-      require('leap').create_default_mappings()
+      vim.keymap.set({ 'n', 'x', 'o' }, 's', '<Plug>(leap)')
+      vim.keymap.set('n', 'S', '<Plug>(leap-from-window)')
     end,
   },
 }
