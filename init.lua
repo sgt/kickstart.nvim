@@ -84,7 +84,7 @@ I hope you enjoy your Neovim journey,
 P.S. You can delete this when you're done too. It's your config now! :)
 --]]
 
-vim.o.guifont = 'Cascadia Code NF:h11'
+vim.o.guifont = 'CaskaydiaCove NF:h11'
 vim.g.neovide_cursor_animation_length = 0.08
 vim.g.neovide_cursor_trail_size = 0.0
 
@@ -109,7 +109,11 @@ vim.o.number = true
 vim.o.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
-vim.o.mouse = ''
+if vim.g.neovide then
+  vim.o.mouse = 'a'
+else
+  vim.o.mouse = ''
+end
 
 -- Don't show the mode, since it's already in the status line
 vim.o.showmode = false
@@ -416,7 +420,11 @@ require('lazy').setup({
         --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
         --   },
         -- },
-        -- pickers = {}
+        pickers = {
+          colorscheme = {
+            enable_preview = true,
+          },
+        },
         extensions = {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
@@ -898,12 +906,12 @@ require('lazy').setup({
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
+      -- can't decide
       if vim.g.neovide then
         vim.cmd.colorscheme 'tokyonight-day'
       else
         vim.cmd.colorscheme 'tokyonight'
       end
-
     end,
   },
 
@@ -926,7 +934,7 @@ require('lazy').setup({
       -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
       -- - sd'   - [S]urround [D]elete [']quotes
       -- - sr)'  - [S]urround [R]eplace [)] [']
-      require('mini.surround').setup()
+      -- require('mini.surround').setup()
 
       -- Simple and easy statusline.
       --  You could remove this setup call if you don't like it,
@@ -993,7 +1001,7 @@ require('lazy').setup({
   --    This is the easiest way to modularize your config.
   --
   --  Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
-  -- { import = 'custom.plugins' },
+  { import = 'custom.plugins' },
   --
   -- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
   -- Or use telescope!

@@ -26,4 +26,10 @@ return {
       vim.keymap.set('n', 'S', '<Plug>(leap-from-window)')
     end,
   },
+  {
+    'vladdoster/remember.nvim',
+    config = function()
+      require('remember').setup {}
+    end,
+  },
 }
